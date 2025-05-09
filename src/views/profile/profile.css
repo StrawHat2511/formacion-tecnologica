@@ -1,0 +1,93 @@
+/* Estilos para el contenedor principal del perfil */
+.profile-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del perfil */
+.profile-container h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Estilos para cada campo del perfil */
+.profile-item {
+  display: flex;
+  flex-direction: column; /* Cambiamos a columna para alinear mejor */
+  align-items: flex-start; /* Alineamos a la izquierda */
+  margin-bottom: 10px; /* Reducimos el margen inferior para que no esté tan separado */
+}
+
+.profile-item label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px; /* Espaciado entre el label y el campo */
+}
+
+.profile-item p,
+.profile-item input {
+  font-size: 1rem;
+  color: #333;
+  width: 100%; /* Para que el input ocupe todo el ancho disponible */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.profile-item input {
+  margin-top: 5px;
+}
+
+.profile-item p {
+  padding-top: 5px;
+}
+
+.profile-item button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.profile-item button:hover {
+  background-color: #0056b3;
+}
+
+.edit-button {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background-color: #218838;
+}
+
+.save-button {
+  padding: 10px 15px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: #e68900;
+}

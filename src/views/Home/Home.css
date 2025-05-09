@@ -1,0 +1,88 @@
+.home-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.home-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.home-header p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.featured-talks h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.featured-talks ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.featured-talks li {
+  background: #f3f3f3;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.home-login-link {
+  margin-top: 2rem;
+}
+
+.login-button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+.talks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.talk-card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.talk-card:hover {
+  transform: translateY(-4px);
+}
+.talk-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.talk-info {
+  padding: 1rem;
+}
+
+.talk-info h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+.talk-info p {
+  font-size: 0.95rem;
+  color: #555;
+}
