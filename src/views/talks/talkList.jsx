@@ -8,6 +8,7 @@ const TalkList = () => {
   // Cargar las charlas desde localStorage cuando el componente se monta
   useEffect(() => {
     const storedCharlas = JSON.parse(localStorage.getItem("charlas"));
+    console.log(storedCharlas);
     if (storedCharlas) {
       setCharlas(storedCharlas);
     }
