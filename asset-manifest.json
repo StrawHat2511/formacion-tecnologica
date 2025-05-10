@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/formacion-tecnologica/static/css/main.d851aa90.css",
-    "main.js": "/formacion-tecnologica/static/js/main.717088b9.js",
+    "main.css": "/formacion-tecnologica/static/css/main.7d7a5cda.css",
+    "main.js": "/formacion-tecnologica/static/js/main.b077540a.js",
     "static/js/453.27c5af64.chunk.js": "/formacion-tecnologica/static/js/453.27c5af64.chunk.js",
     "index.html": "/formacion-tecnologica/index.html",
-    "main.d851aa90.css.map": "/formacion-tecnologica/static/css/main.d851aa90.css.map",
-    "main.717088b9.js.map": "/formacion-tecnologica/static/js/main.717088b9.js.map",
+    "main.7d7a5cda.css.map": "/formacion-tecnologica/static/css/main.7d7a5cda.css.map",
+    "main.b077540a.js.map": "/formacion-tecnologica/static/js/main.b077540a.js.map",
     "453.27c5af64.chunk.js.map": "/formacion-tecnologica/static/js/453.27c5af64.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d851aa90.css",
-    "static/js/main.717088b9.js"
+    "static/css/main.7d7a5cda.css",
+    "static/js/main.b077540a.js"
   ]
 }
