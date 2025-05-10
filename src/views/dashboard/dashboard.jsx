@@ -1,6 +1,8 @@
 import "./dashboard.css";
 import { React, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import AddTalk from "../talks/addTalk/addTalk";
+import charlasIniciales from "../../data/charlas.js"; // Asegúrate de que la ruta sea correcta
 
 const Dashboard = () => {
   const [charlas, setCharlas] = useState([]);
@@ -10,10 +12,17 @@ const Dashboard = () => {
 
   // Cargar las charlas desde localStorage
   useEffect(() => {
-    const storedCharlas = JSON.parse(localStorage.getItem("charlas"));
-    if (storedCharlas) {
-      setCharlas(storedCharlas);
-    }
+    const storedCharlas = JSON.parse(localStorage.getItem("charlas")) || [];
+    const todasCharlas = [...charlasIniciales];
+
+    // Agrega solo las nuevas charlas (que no estén en las iniciales)
+    storedCharlas.forEach((charla) => {
+      if (!todasCharlas.some((c) => c.id === charla.id)) {
+        todasCharlas.push(charla);
+      }
+    });
+
+    setCharlas(todasCharlas);
   }, []);
 
   // Cargar usuarios desde localStorage
@@ -28,48 +37,37 @@ const Dashboard = () => {
 
   // Función para agregar una charla
   const handleAddCharla = (newTalk) => {
-    const storedCharlas = JSON.parse(localStorage.getItem("charlas")) || [];
-    const updatedCharlas = [
-      ...charlas,
-      { ...newTalk, id: Date.now() }, // Usamos Date.now() para asegurar una ID única
-    ];
-    setCharlas(updatedCharlas);
-    localStorage.setItem("charlas", JSON.stringify(updatedCharlas)); // Guardar en localStorage
+    const nuevaCharla = { ...newTalk, id: Date.now().toString() };
+    const updatedCharlas = [...charlas, nuevaCharla];
 
+    // Solo guardar en localStorage las que NO estén en charlasIniciales
+    const nuevasCharlasParaGuardar = updatedCharlas.filter(
+      (c) => !charlasIniciales.some((ci) => ci.id === c.id)
+    );
+
+    localStorage.setItem("charlas", JSON.stringify(nuevasCharlasParaGuardar));
+    setCharlas(updatedCharlas);
     setShowAddTalk(false);
   };
 
-  // Función para eliminar un solo usuario
+  // Función para eliminar un usuario
   const handleDeleteUser = (id) => {
-    // Encuentra el índice del usuario a eliminar
-    const userIndex = usuarios.findIndex((usuario) => usuario.id === id);
-
-    // Si el usuario existe, eliminamos el elemento en el índice encontrado
-    if (userIndex !== -1) {
-      const updatedUsuarios = [
-        ...usuarios.slice(0, userIndex), // Los usuarios antes del índice
-        ...usuarios.slice(userIndex + 1), // Los usuarios después del índice
-      ];
-
-      // Actualizamos el estado con los usuarios filtrados
-      setUsuarios(updatedUsuarios);
-
-      // Guardamos los usuarios actualizados en el localStorage
-      localStorage.setItem(
-        "usuariosRegistrados",
-        JSON.stringify(updatedUsuarios)
-      );
-    }
+    const updatedUsuarios = usuarios.filter((usuario) => usuario.id !== id);
+    setUsuarios(updatedUsuarios);
+    localStorage.setItem(
+      "usuariosRegistrados",
+      JSON.stringify(updatedUsuarios)
+    );
   };
 
   // Función para eliminar una charla
   const handleDeleteCharla = (id) => {
     const updatedCharlas = charlas.filter((charla) => charla.id !== id);
     setCharlas(updatedCharlas);
-    localStorage.setItem("charlas", JSON.stringify(updatedCharlas)); // Guardar en localStorage
+    localStorage.setItem("charlas", JSON.stringify(updatedCharlas));
   };
 
-  const isAdmin = true; // Esto puede ser dinámico según el estado del usuario
+  const isAdmin = true;
 
   return (
     <div className="dashboard-container">
@@ -80,7 +78,6 @@ const Dashboard = () => {
         </p>
       </header>
 
-      {/* Mostrar formulario de agregar charla si el admin lo solicita */}
       {showAddTalk && (
         <section className="add-talk-form">
           <AddTalk
@@ -90,7 +87,6 @@ const Dashboard = () => {
         </section>
       )}
 
-      {/* Estadísticas Generales */}
       <section className="stats-section">
         <h2>Estadísticas Generales</h2>
         <div className="stats-grid">
@@ -105,7 +101,6 @@ const Dashboard = () => {
         </div>
       </section>
 
-      {/* Charlas Recientes */}
       <section className="recent-talks">
         <h2>Charlas Recientes</h2>
         <div className="talks-list">
@@ -113,18 +108,22 @@ const Dashboard = () => {
             <div key={charla.id} className="talk-card">
               <h3>{charla.titulo}</h3>
               <p>{charla.descripcion}</p>
-              <button
-                onClick={() => handleDeleteCharla(charla.id)}
-                className="admin-buttonDelete"
-              >
-                Eliminar
-              </button>
+              <div className="admin-actions-inline">
+                <button
+                  onClick={() => handleDeleteCharla(charla.id)}
+                  className="admin-buttonDelete"
+                >
+                  Eliminar
+                </button>
+                <Link to={`/charla/${charla.id}`} className="admin-buttonView">
+                  Ver detalles
+                </Link>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Botones de administración si es admin */}
       {isAdmin && (
         <section className="admin-actions">
           <button
@@ -144,7 +143,6 @@ const Dashboard = () => {
         </section>
       )}
 
-      {/* Modal de gestión de usuarios */}
       {isAdmin && showManageUsers && (
         <div className="modal-overlay">
           <div className="modal">

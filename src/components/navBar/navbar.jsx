@@ -26,6 +26,9 @@ const Navbar = ({ isAdmin, onLogout, usuario }) => {
             </li>
           </>
         )}
+        <li className={location.pathname === "/foro" ? "active" : ""}>
+          <Link to="/foro">Foro</Link>
+        </li>
         <li className={location.pathname === "/about" ? "active" : ""}>
           <Link to="/about">Acerca de</Link>
         </li>

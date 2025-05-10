@@ -15,7 +15,7 @@ import TalkDetail from "./views/talks/talkDetail";
 import Register from "./views/register/register";
 import About from "./views/about/about";
 import "./App.css";
-
+import Foro from "./views/foro/foro";
 // Constantes para evitar errores de escritura en localStorage
 const USUARIOS_KEY = "usuariosRegistrados";
 const USUARIO_ACTUAL_KEY = "usuarioActual";
@@ -131,11 +131,16 @@ function App() {
           path="/charla/:id"
           element={usuario ? <TalkDetail /> : <Navigate to="/login" />}
         />
+
         <Route
           path="/profile"
           element={
             usuario ? <Profile usuario={usuario} /> : <Navigate to="/login" />
           }
+        />
+        <Route
+          path="/foro"
+          element={usuario ? <Foro /> : <Navigate to="/login" />}
         />
 
         {/* Rutas solo para admin */}

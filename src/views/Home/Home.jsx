@@ -1,9 +1,9 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-
+import charlasIniciales from "../../data/charlas";
 const Home = () => {
-  const charlas = [
+  /*const charlas = [
     {
       id: 1,
       titulo: "Charla sobre React",
@@ -17,8 +17,21 @@ const Home = () => {
       descripcion: "Descubre cómo funciona la IA y sus aplicaciones.",
       imagen: "https://i.ytimg.com/vi/2ePf9rue1Ao/maxresdefault.jpg",
     },
-  ];
+  ];*/
+  const [charlas, setCharlas] = useState([]);
 
+  useEffect(() => {
+    const storedCharlas = JSON.parse(localStorage.getItem("charlas")) || [];
+    const todasCharlas = [...charlasIniciales];
+
+    storedCharlas.forEach((charla) => {
+      if (!todasCharlas.some((c) => c.id === charla.id)) {
+        todasCharlas.push(charla);
+      }
+    });
+
+    setCharlas(todasCharlas);
+  }, []);
   return (
     <div className="home-container">
       <header className="home-header">

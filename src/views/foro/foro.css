@@ -1,0 +1,86 @@
+.foro {
+  padding: 2rem;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9fafc;
+  min-height: 100vh;
+}
+
+.foro-content {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.temas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.tema-card {
+  padding: 1rem;
+  background: #eaf0f6;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tema-card:hover {
+  background: #d2e1f0;
+}
+
+.tema-detalle {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f0f4f8;
+  border-radius: 12px;
+}
+
+.comentarios-section {
+  margin-top: 1rem;
+}
+
+.comentarios-section textarea {
+  width: 100%;
+  height: 80px;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  resize: none;
+}
+
+.comentarios-section button {
+  margin-top: 0.5rem;
+  background: #2c88d9;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.comentario-item {
+  background: #ffffff;
+  border-left: 4px solid #2c88d9;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  border-radius: 6px;
+}
+
+.cerrar-btn {
+  margin-top: 1rem;
+  background: #ff5e5e;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.cerrar-btn:hover {
+  background: #ff3b3b;
+}
