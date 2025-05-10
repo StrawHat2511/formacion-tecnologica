@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/formacion-tecnologica/static/css/main.d851aa90.css",
-    "main.js": "/formacion-tecnologica/static/js/main.e7e74065.js",
+    "main.js": "/formacion-tecnologica/static/js/main.cfb10432.js",
     "static/js/453.27c5af64.chunk.js": "/formacion-tecnologica/static/js/453.27c5af64.chunk.js",
     "index.html": "/formacion-tecnologica/index.html",
     "main.d851aa90.css.map": "/formacion-tecnologica/static/css/main.d851aa90.css.map",
-    "main.e7e74065.js.map": "/formacion-tecnologica/static/js/main.e7e74065.js.map",
+    "main.cfb10432.js.map": "/formacion-tecnologica/static/js/main.cfb10432.js.map",
     "453.27c5af64.chunk.js.map": "/formacion-tecnologica/static/js/453.27c5af64.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d851aa90.css",
-    "static/js/main.e7e74065.js"
+    "static/js/main.cfb10432.js"
   ]
 }
