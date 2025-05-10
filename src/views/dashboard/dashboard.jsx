@@ -28,20 +28,14 @@ const Dashboard = () => {
 
   // Función para agregar una charla
   const handleAddCharla = (newTalk) => {
-    // Obtener las charlas actuales desde localStorage
     const storedCharlas = JSON.parse(localStorage.getItem("charlas")) || [];
-    // Generar el ID secuencial
-    const nextId =
-      storedCharlas.length > 0
-        ? storedCharlas[storedCharlas.length - 1].id + 1
-        : 1;
-
     const updatedCharlas = [
       ...charlas,
-      { ...newTalk, id: nextId }, // Usamos Date.now() para asegurar una ID única
+      { ...newTalk, id: Date.now() }, // Usamos Date.now() para asegurar una ID única
     ];
     setCharlas(updatedCharlas);
     localStorage.setItem("charlas", JSON.stringify(updatedCharlas)); // Guardar en localStorage
+
     setShowAddTalk(false);
   };
 

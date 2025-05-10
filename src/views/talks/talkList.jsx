@@ -24,7 +24,7 @@ const TalkList = () => {
             <div key={charla.id} className="talk-card">
               <h3>{charla.titulo}</h3>
               <p>{charla.descripcion}</p>
-              <Link to={`/charla/${charla.id}`} className="view-details">
+              <Link to={"/charla/1"} className="view-details">
                 Ver detalles
               </Link>
             </div>
