@@ -119,6 +119,7 @@
 .admin-buttonDelete:hover {
   background-color: #c82333;
 }
+
 .users-list {
   display: flex;
   flex-direction: column;
@@ -147,6 +148,7 @@
   color: #333;
   font-size: 0.95rem;
 }
+
 /* Fondo oscuro semitransparente */
 .modal-overlay {
   position: fixed;

@@ -27,9 +27,14 @@ const TalkDetail = () => {
 
   if (!charla) return <div>Charla no encontrada</div>;
 
+  // Asegúrate de que quiz está disponible
+  const quiz = charla.quiz || {};
+  const pregunta = quiz.pregunta || "Pregunta no disponible";
+  const opciones = quiz.opciones || [];
+
   const handleRespuesta = (index) => {
     setRespuestaSeleccionada(index);
-    setRespuestaCorrecta(index === charla.quiz.respuestaCorrecta);
+    setRespuestaCorrecta(index === quiz.respuestaCorrecta);
   };
 
   return (
@@ -48,38 +53,40 @@ const TalkDetail = () => {
       <p>{charla.descripcion}</p>
 
       {/* Mini Quiz */}
-      <div className="quiz-container">
-        <h3>Mini Quiz</h3>
-        <p>
-          <strong>{charla.quiz.pregunta}</strong>
-        </p>
-        <ul className="quiz-options">
-          {charla.quiz.opciones.map((opcion, index) => (
-            <li key={index}>
-              <button
-                className={`quiz-button ${
-                  respuestaSeleccionada === index
-                    ? respuestaCorrecta
-                      ? "correct"
-                      : "incorrect"
-                    : ""
-                }`}
-                onClick={() => handleRespuesta(index)}
-                disabled={respuestaSeleccionada !== null}
-              >
-                {opcion}
-              </button>
-            </li>
-          ))}
-        </ul>
-        {respuestaSeleccionada !== null && (
-          <p className="quiz-feedback">
-            {respuestaCorrecta
-              ? "¡Correcto! 🎉"
-              : "Incorrecto. Intenta repasar el contenido."}
+      {quiz && (
+        <div className="quiz-container">
+          <h3>Mini Quiz</h3>
+          <p>
+            <strong>{pregunta}</strong>
           </p>
-        )}
-      </div>
+          <ul className="quiz-options">
+            {opciones.map((opcion, index) => (
+              <li key={index}>
+                <button
+                  className={`quiz-button ${
+                    respuestaSeleccionada === index
+                      ? respuestaCorrecta
+                        ? "correct"
+                        : "incorrect"
+                      : ""
+                  }`}
+                  onClick={() => handleRespuesta(index)}
+                  disabled={respuestaSeleccionada !== null}
+                >
+                  {opcion}
+                </button>
+              </li>
+            ))}
+          </ul>
+          {respuestaSeleccionada !== null && (
+            <p className="quiz-feedback">
+              {respuestaCorrecta
+                ? "¡Correcto! 🎉"
+                : "Incorrecto. Intenta repasar el contenido."}
+            </p>
+          )}
+        </div>
+      )}
 
       <Link to="/" className="back-link">
         ← Volver al inicio
